@@ -1,0 +1,19 @@
+/* Script for ld -r: link without relocation */
+OUTPUT_FORMAT(a.out-zero-big)
+SECTIONS
+{
+  .text :
+  {
+    CREATE_OBJECT_SYMBOLS
+    *(.text)
+  }
+  .data :
+  {
+    *(.data)
+  }
+  .bss :
+  {
+    *(.bss)
+    *(COMMON)
+  }
+}

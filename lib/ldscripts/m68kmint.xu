@@ -1,0 +1,20 @@
+/* Script for ld -Ur: link w/out relocation, do create constructors */
+OUTPUT_FORMAT(a.out-zero-big)
+SECTIONS
+{
+  .text :
+  {
+    CREATE_OBJECT_SYMBOLS
+    *(.text)
+    CONSTRUCTORS
+  }
+  .data :
+  {
+    *(.data)
+  }
+  .bss :
+  {
+    *(.bss)
+    *(COMMON)
+  }
+}
