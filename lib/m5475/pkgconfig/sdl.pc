@@ -1,0 +1,15 @@
+# sdl pkg-config source file
+
+prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+exec_prefix=${prefix}
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m5475
+includedir=${prefix}/include
+
+Name: sdl
+Description: Simple DirectMedia Layer is a cross-platform multimedia library designed to provide low level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.
+Version: 1.2.15
+Requires:
+Conflicts:
+Libs: -L${libdir}  -lSDL  -lgem
+Libs.private: -lSDL  -lgem  -lm
+Cflags: -I${includedir}/SDL 
