@@ -1,0 +1,19 @@
+#
+# Author: Lasse Collin
+#
+# This file has been put into the public domain.
+# You can do whatever you want with this file.
+#
+
+prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+exec_prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m5475
+includedir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/include
+
+Name: liblzma
+Description: General purpose data compression library
+URL: http://tukaani.org/xz/
+Version: 5.2.1
+Cflags: -I${includedir}
+Libs: -L${libdir} -llzma
+Libs.private:  
