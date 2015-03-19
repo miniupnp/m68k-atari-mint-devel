@@ -1,0 +1,13 @@
+prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+exec_prefix=${prefix}
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m68020-60
+sharedlibdir=${libdir}
+includedir=${prefix}/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.8
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
