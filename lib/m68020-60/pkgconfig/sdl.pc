@@ -2,7 +2,7 @@
 
 prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
 exec_prefix=${prefix}
-libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m5475
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m68020-60
 includedir=${prefix}/include
 
 Name: sdl

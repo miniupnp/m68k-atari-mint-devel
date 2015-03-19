@@ -10,6 +10,6 @@ Description: Simple DirectMedia Layer is a cross-platform multimedia library des
 Version: 1.2.15
 Requires:
 Conflicts:
-Libs: -L${libdir}  -lSDL  -lgem
-Libs.private: -lSDL  -lgem  -lm
+Libs: -L${libdir}  -lSDL  -lgem -lldg -lgem
+Libs.private: -lSDL  -lgem -lldg -lgem  -lm
 Cflags: -I${includedir}/SDL 
