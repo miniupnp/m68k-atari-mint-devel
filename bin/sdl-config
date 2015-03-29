@@ -44,12 +44,8 @@ while test $# -gt 0; do
     --cflags)
       echo -I${prefix}/include/SDL 
       ;;
-#    --libs)
-#      echo -L/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m5475  -lSDL  -lgem -lldg -lgem
-#      ;;
-#    --static-libs)
     --libs|--static-libs)
-      echo -L/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m5475  -lSDL  -lgem -lldg -lgem  -lm
+      echo -L${libdir} -lSDL -lgem -lldg -lgem -lm
       ;;
     *)
       echo "${usage}" 1>&2
