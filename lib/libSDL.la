@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib'
+libdir='/usr/local/lib'
