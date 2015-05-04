@@ -1,0 +1,12 @@
+prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+exec_prefix=${prefix}
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m68020-60
+includedir=${prefix}/include
+
+Name: libexif
+Description: Library for easy access to EXIF data
+Requires:
+Version: 0.6.21
+Libs: -L${libdir} -lexif
+Libs.private: -lm
+Cflags: -I${includedir}
