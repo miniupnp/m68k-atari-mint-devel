@@ -1,5 +1,5 @@
 /*
- *  $Id: mt_gem.h.in,v 1.76 2007/03/12 20:40:45 a_bercegeay Exp $
+ *  $Id: mt_gem.h.in,v 1.91 2016/01/14 20:56:45 landemarre Exp $
  */
 
 /**@file
@@ -43,15 +43,15 @@ __BEGIN_DECLS
 
 /* Major and minor version number of the GEMLib package.  Use these macros 
    to test for features in specific releases.  */
-#define __GEMLIB__			 __GEMLIB_MAJOR__ 		/**< tell the world this is GEMLIB */
-#define	__GEMLIB_MAJOR__     0				/**< MAJOR version number of gemlib */
-#define	__GEMLIB_MINOR__     43				/**< MINOR version number of gemlib */
-#define __GEMLIB_REVISION__  6				/**< REVISION version number of gemlib */
-#define __GEMLIB_BETATAG__   ""				/**< BETATAG of gemlib */
+#define __GEMLIB__		__GEMLIB_MAJOR__ 		/**< tell the world this is GEMLIB */
+#define	__GEMLIB_MAJOR__	0				/**< MAJOR version number of gemlib */
+#define	__GEMLIB_MINOR__	44				/**< MINOR version number of gemlib */
+#define __GEMLIB_REVISION__	0				/**< REVISION version number of gemlib */
+#define __GEMLIB_BETATAG__	""				/**< BETATAG of gemlib */
 
-/* the other name of this release is MGEMLIB 42 */
-#define MGEMLIB				42						/**< this gemlib is compatible with MGEMLIB */
-#define __MGEMLIB__			42						/**< another identifier for MGEMLIB */
+/* the other name of this release is MGEMLIB 44 */
+#define MGEMLIB			44						/**< this gemlib is compatible with MGEMLIB */
+#define __MGEMLIB__		44						/**< another identifier for MGEMLIB */
 
 
 #ifdef __GEMLIB_DEFS
@@ -60,46 +60,51 @@ __BEGIN_DECLS
  * The AES specific stuff from old gemfast.h
  */
 
-#define NIL 				0					/**< TODO */
+#define NIL 			-1					/**< Value for no more object in object tree */
 #define DESKTOP_HANDLE		0					/**< TODO */
-#define DESK			 	DESKTOP_HANDLE		/**< TODO */
+#define DESK			DESKTOP_HANDLE		/**< TODO */
 
 /* mt_appl_control() mode */
-#define APC_HIDE			10  /**< Hide application -- see mt_appl_control() */
-#define APC_SHOW			11  /**< Show application -- see mt_appl_control() */
-#define APC_TOP 			12  /**< Bring application to front -- see mt_appl_control() */
+#define APC_HIDE		10  /**< Hide application -- see mt_appl_control() */
+#define APC_SHOW		11  /**< Show application -- see mt_appl_control() */
+#define APC_TOP 		12  /**< Bring application to front -- see mt_appl_control() */
 #define APC_HIDENOT 		13  /**< Hide all applications except the one referred to by ap_cid -- see mt_appl_control() */
-#define APC_INFO			14  /**< Get the application parameter -- see mt_appl_control() */
-#define APC_MENU			15  /**< The last used menu tree is returned -- see mt_appl_control() */
-#define APC_WIDGETS			16  /**< Inquires or sets the 'default' positions of the window widgets -- see mt_appl_control() */
+#define APC_INFO		14  /**< Get the application parameter -- see mt_appl_control() */
+#define APC_MENU		15  /**< The last used menu tree is returned -- see mt_appl_control() */
+#define APC_WIDGETS		16  /**< Inquires or sets the 'default' positions of the window widgets -- see mt_appl_control() */
+#define APC_APP_CONFIG		17  /**< Change some way to manage application by AES most of them can be already set in configuration file -- see mt_appl_control() */
+#define APC_INFORM_MESAG	18  /**< Request/Remove the sent an user Unix Signal to application when AES message is available -- see mt_appl_control() */
 
 /* APC_INFO bits */
-#define APCI_HIDDEN			0x01  /**< the application is hidden -- subopcode for #APC_INFO */
+#define APCI_HIDDEN		0x01  /**< the application is hidden -- subopcode for #APC_INFO */
 #define APCI_HASMBAR		0x02  /**< the application has a menu bar -- subopcode for #APC_INFO */
 #define APCI_HASDESK		0x04  /**< the application has a own desk -- subopcode for #APC_INFO */
 
 /* appl_getinfo modes */
 #define AES_LARGEFONT		0	/**< see  mt_appl_getinfo() */
 #define AES_SMALLFONT		1	/**< see  mt_appl_getinfo() */
-#define AES_SYSTEM			2	/**< see  mt_appl_getinfo() */
+#define AES_SYSTEM		2	/**< see  mt_appl_getinfo() */
 #define AES_LANGUAGE 		3	/**< see  mt_appl_getinfo() */
 #define AES_PROCESS 		4	/**< see  mt_appl_getinfo() */
-#define AES_PCGEM			5	/**< see  mt_appl_getinfo() */
+#define AES_PCGEM		5	/**< see  mt_appl_getinfo() */
 #define AES_INQUIRE 		6	/**< see  mt_appl_getinfo() */
-#define AES_MOUSE			8	/**< see  mt_appl_getinfo() */
-#define AES_MENU			9	/**< see  mt_appl_getinfo() */
-#define AES_SHELL			10	/**< see  mt_appl_getinfo() */
-#define AES_WINDOW			11	/**< see  mt_appl_getinfo() */
-#define AES_MESSAGE			12	/**< see  mt_appl_getinfo() */
-#define AES_OBJECT			13	/**< see  mt_appl_getinfo() */
-#define AES_FORM			14	/**< see  mt_appl_getinfo() */
+#define AES_MOUSE		8	/**< see  mt_appl_getinfo() */
+#define AES_MENU		9	/**< see  mt_appl_getinfo() */
+#define AES_SHELL		10	/**< see  mt_appl_getinfo() */
+#define AES_WINDOW		11	/**< see  mt_appl_getinfo() */
+#define AES_MESSAGE		12	/**< see  mt_appl_getinfo() */
+#define AES_OBJECT		13	/**< see  mt_appl_getinfo() */
+#define AES_FORM		14	/**< see  mt_appl_getinfo() */
 #define AES_EXTENDED		64	/**< see  mt_appl_getinfo() */
-#define AES_NAES			65	/**< see  mt_appl_getinfo() */
-#define AES_VERSION         96  /**< see  mt_appl_getinfo() and  mt_appl_getinfo_str() */
-#define AES_WOPTS           97  /**< see  mt_appl_getinfo() */
+#define AES_NAES		65	/**< see  mt_appl_getinfo() */
+#define AES_VERSION         	96  	/**< see  mt_appl_getinfo() and  mt_appl_getinfo_str() */
+#define AES_WOPTS           	97  	/**< see  mt_appl_getinfo() */
+#define AES_WFORM		98	/**< see  mt_appl_getinfo() */
+#define AES_APPL_OPTION		99	/**< see  mt_appl_getinfo() */
+#define AES_WINX		22360	/**< AES WINX information, see  mt_appl_getinfo() */
 
 /* appl_getinfo return values (AES_LARGEFONT, AES_SMALLFONT) */
-#define SYSTEM_FONT			0	/**< see  mt_appl_getinfo() */
+#define SYSTEM_FONT		0	/**< see  mt_appl_getinfo() */
 #define OUTLINE_FONT 		1	/**< see  mt_appl_getinfo() */
 
 /* appl_getinfo return values (AES_LANGUAGE) */
@@ -111,18 +116,18 @@ __BEGIN_DECLS
 #define AESLANG_SWEDISH 	6	/**< see  mt_appl_getinfo() */
 
 /* appl_read modes */
-#define APR_NOWAIT			-1	/**< Do not wait for message -- see mt_appl_read() */
+#define APR_NOWAIT		-1	/**< Do not wait for message -- see mt_appl_read() */
 
 /* appl_search modes */
-#define APP_FIRST 			0	/**< see mt_appl_search() */
-#define APP_NEXT			1	/**< see mt_appl_search() */
-#define APP_DESK			2	/**< see mt_appl_search() */
+#define APP_FIRST 		0	/**< see mt_appl_search() */
+#define APP_NEXT		1	/**< see mt_appl_search() */
+#define APP_DESK		2	/**< see mt_appl_search() */
 
 /* appl_search return values*/
-#define APP_SYSTEM			0x01	/**< see mt_appl_search() */
+#define APP_SYSTEM		0x01	/**< see mt_appl_search() */
 #define APP_APPLICATION		0x02	/**< see mt_appl_search() */
 #define APP_ACCESSORY		0x04	/**< see mt_appl_search() */
-#define APP_SHELL 			0x08	/**< see mt_appl_search() */
+#define APP_SHELL 		0x08	/**< see mt_appl_search() */
 
 /* appl_trecord types */
 #define APPEVNT_TIMER	 	0	/**< see struct pEvntrec */
@@ -152,8 +157,8 @@ typedef struct pEvntrec
 
 /* evnt_button flags */
 #define LEFT_BUTTON		0x0001	/**< mask for left mouse button, see mt_evnt_button() */
-#define RIGHT_BUTTON 	0x0002	/**< mask for right mouse button, see mt_evnt_button() */
-#define MIDDLE_BUTTON	0x0004	/**< mask for middle mouse button, see mt_evnt_button() */
+#define RIGHT_BUTTON 		0x0002	/**< mask for right mouse button, see mt_evnt_button() */
+#define MIDDLE_BUTTON		0x0004	/**< mask for middle mouse button, see mt_evnt_button() */
 
 #define K_RSHIFT		0x0001	/**< mask for right shift key, see mt_evnt_button() */
 #define K_LSHIFT		0x0002	/**< mask for left shift key, see mt_evnt_button() */
@@ -480,7 +485,7 @@ typedef struct pEvntrec
  *  be check by calling mt_appl_getinfo() with the parameter #AES_MESSAGE.
  *
  */
-#define WM_UNICONIFY	35
+#define WM_UNICONIFY		35
 
 /** message received when the user clicks on the #SMALLER window gadget while
  *  the CONTROL key is pressed.
@@ -500,7 +505,7 @@ typedef struct pEvntrec
  *  @since AES version 4.1.  The availability of this feature could
  *  be check by calling mt_appl_getinfo() with the parameter #AES_MESSAGE.
  */
-#define WM_ALLICONIFY	36
+#define WM_ALLICONIFY		36
 
 /** message received when the user clicks on a toolbar object
  *
@@ -703,9 +708,9 @@ typedef struct pEvntrec
  * - msg[6] = 
  * - msg[7] =
  */
-#define SH_WDRAW			72
+#define SH_WDRAW		72
 
-#define SC_CHANGED			80	/**< TODO */
+#define SC_CHANGED		80	/**< TODO */
 #define PRN_CHANGED 		82	/**< TODO */
 #define FNT_CHANGED 		83	/**< TODO */
 
@@ -725,9 +730,9 @@ typedef struct pEvntrec
  *
  *  @since MagiC (?).
  */
-#define THR_EXIT			88
+#define THR_EXIT		88
 
-#define PA_EXIT 			89	/**< TODO */
+#define PA_EXIT 		89	/**< TODO */
 
 /** message received when a child process that this application has
  *  started returns.
@@ -744,7 +749,7 @@ typedef struct pEvntrec
  *  @since AES version 4.0.  The availability of this feature could
  *  be check by calling mt_appl_getinfo() with the parameter #AES_MESSAGE.
  */
-#define CH_EXIT 			90
+#define CH_EXIT 		90
 
 #define WM_M_BDROPPED		100		/* KAOS 1.4  */	/**< TODO */
 
@@ -769,26 +774,26 @@ typedef struct pEvntrec
  *  @sa mt_appl_control()
  */
 #define SM_M_SPECIAL		101
-#define SM_M_RES2			102		/**< MAG!X screen manager extension */
-#define SM_M_RES3			103		/**< MAG!X screen manager extension */
-#define SM_M_RES4			104		/**< MAG!X screen manager extension */
-#define SM_M_RES5			105		/**< MAG!X screen manager extension */
-#define SM_M_RES6			106		/**< MAG!X screen manager extension */
-#define SM_M_RES7			107		/**< MAG!X screen manager extension */
-#define SM_M_RES8			108		/**< MAG!X screen manager extension */
-#define SM_M_RES9			109		/**< MAG!X screen manager extension */
-#define WM_SHADED			22360	/**< TODO [WM_SHADED apid 0 win 0 0 0 0]   */
+#define SM_M_RES2		102		/**< MAG!X screen manager extension */
+#define SM_M_RES3		103		/**< MAG!X screen manager extension */
+#define SM_M_RES4		104		/**< MAG!X screen manager extension */
+#define SM_M_RES5		105		/**< MAG!X screen manager extension */
+#define SM_M_RES6		106		/**< MAG!X screen manager extension */
+#define SM_M_RES7		107		/**< MAG!X screen manager extension */
+#define SM_M_RES8		108		/**< MAG!X screen manager extension */
+#define SM_M_RES9		109		/**< MAG!X screen manager extension */
+#define WM_SHADED		22360	/**< TODO [WM_SHADED apid 0 win 0 0 0 0]   */
 #define WM_UNSHADED 		22361	/**< TODO [WM_UNSHADED apid 0 win 0 0 0 0] */
 
 /* SM_M_SPECIAL sub-opcode */
 #define SMC_TIDY_UP		0    /* MagiC 2  */ 	 /**< TODO */
-#define SMC_TERMINATE	1    /* MagiC 2  */ 	 /**< TODO */
+#define SMC_TERMINATE		1    /* MagiC 2  */ 	 /**< TODO */
 #define SMC_SWITCH		2    /* MagiC 2  */ 	 /**< TODO */
 #define SMC_FREEZE		3    /* MagiC 2  */ 	 /**< TODO */
-#define SMC_UNFREEZE	4    /* MagiC 2  */ 	 /**< TODO */
+#define SMC_UNFREEZE		4    /* MagiC 2  */ 	 /**< TODO */
 #define SMC_RES5		5    /* MagiC 2  */ 	 /**< TODO */
-#define SMC_UNHIDEALL	6    /* MagiC 3.1	*/   /**< TODO */
-#define SMC_HIDEOTHERS	7    /* MagiC 3.1	*/   /**< TODO */
+#define SMC_UNHIDEALL		6    /* MagiC 3.1	*/   /**< TODO */
+#define SMC_HIDEOTHERS		7    /* MagiC 3.1	*/   /**< TODO */
 #define SMC_HIDEACT		8    /* MagiC 3.1	*/   /**< TODO */
 
 /** Message received when an event occurs on mouse wheel.
@@ -826,14 +831,14 @@ typedef struct pEvntrec
 #define MO_LEAVE		1	/**< Wait for mouse to leave rectangle, see mt_evnt_mouse() */
 
 /* evnt_multi flags */
-#define MU_KEYBD			0x0001	/**< Wait for a user keypress, see mt_evnt_multi() */
-#define MU_BUTTON			0x0002	/**< Wait for the specified mouse button state, see mt_evnt_multi() */
-#define MU_M1				0x0004	/**< Wait for a mouse/rectangle event as specified, see mt_evnt_multi() */
-#define MU_M2				0x0008	/**< Wait for a mouse/rectangle event as specified, see mt_evnt_multi()  */
-#define MU_MESAG			0x0010	/**< Wait for a message, see mt_evnt_multi() */
-#define MU_TIMER			0x0020	/**< Wait the specified amount of time, see mt_evnt_multi() */
-#define MU_WHEEL			0x0040	/**< TODO (XaAES) */
-#define MU_MX				0x0080	/**< TODO (XaAES) */
+#define MU_KEYBD		0x0001	/**< Wait for a user keypress, see mt_evnt_multi() */
+#define MU_BUTTON		0x0002	/**< Wait for the specified mouse button state, see mt_evnt_multi() */
+#define MU_M1			0x0004	/**< Wait for a mouse/rectangle event as specified, see mt_evnt_multi() */
+#define MU_M2			0x0008	/**< Wait for a mouse/rectangle event as specified, see mt_evnt_multi()  */
+#define MU_MESAG		0x0010	/**< Wait for a message, see mt_evnt_multi() */
+#define MU_TIMER		0x0020	/**< Wait the specified amount of time, see mt_evnt_multi() */
+#define MU_WHEEL		0x0040	/**< TODO (XaAES) */
+#define MU_MX			0x0080	/**< TODO (XaAES) */
 #define MU_NORM_KEYBD		0x0100	/**< TODO (XaAES) */
 #define MU_DYNAMIC_KEYBD	0x0200	/**< TODO (XaAES) */
 
@@ -846,17 +851,17 @@ typedef struct pEvntrec
 #define FA_DISK     "[5]"	/**< display Disk icon, see mt_form_alert() */
 
 /* form_dial opcodes */
-#define FMD_START 			0	/**< reserves the screen space for a dialog, see mt_form_dial() */
-#define FMD_GROW			1	/**< draws an expanding box, see mt_form_dial() */
-#define FMD_SHRINK			2	/**< draws a shrinking box, see mt_form_dial()  */
-#define FMD_FINISH			3	/**< releases the screen space for a dialog, see mt_form_dial() */
+#define FMD_START 		0	/**< reserves the screen space for a dialog, see mt_form_dial() */
+#define FMD_GROW		1	/**< draws an expanding box, see mt_form_dial() */
+#define FMD_SHRINK		2	/**< draws a shrinking box, see mt_form_dial()  */
+#define FMD_FINISH		3	/**< releases the screen space for a dialog, see mt_form_dial() */
 
 /* form_error modes */
 #define FERR_FILENOTFOUND	 2	/**< File Not Found (GEMDOS error -33), see mt_form_error() */
 #define FERR_PATHNOTFOUND	 3	/**< Path Not Found (GEMDOS error -34), see mt_form_error() */
 #define FERR_NOHANDLES		 4	/**< No More File Handles (GEMDOS error -35), see mt_form_error() */
 #define FERR_ACCESSDENIED	 5	/**< Access Denied (GEMDOS error -36), see mt_form_error() */
-#define FERR_LOWMEM			 8	/**< Insufficient Memory (GEMDOS error -39), see mt_form_error() */
+#define FERR_LOWMEM		 8	/**< Insufficient Memory (GEMDOS error -39), see mt_form_error() */
 #define FERR_BADENVIRON 	10	/**< Invalid Environment (GEMDOS error -41), see mt_form_error() */
 #define FERR_BADFORMAT		11	/**< Invalid Format (GEMDOS error -42) */
 #define FERR_BADDRIVE		15	/**< Invalid Drive Specification (GEMDOS error -46), see mt_form_error() */
@@ -877,19 +882,19 @@ typedef struct pEvntrec
 #define SCROLL_YES		1	/**< menu may scroll if it is too high, see MENU::mn_scroll structure  */
 
 /* menu_bar modes */
-#define MENU_INQUIRE	-1	/**< inquire the AES application ID of the process which own the displayed menu, see mt_menu_bar() */
+#define MENU_INQUIRE		-1	/**< inquire the AES application ID of the process which own the displayed menu, see mt_menu_bar() */
 #define MENU_REMOVE		0	/**< remove a menu bar, see mt_menu_bar() */
-#define MENU_INSTALL	1	/**< install a menu bar, see mt_menu_bar() */
-#define MENU_GETMODE	3	   /**< Get the menu bar mode, see mt_menu_bar() */
-#define MENU_SETMODE	4	   /**< Set the menu bar mode, see mt_menu_bar() */
-#define MENU_UPDATE 	5	   /**< Update the system part of the menu bar, see mt_menu_bar() */
+#define MENU_INSTALL		1	/**< install a menu bar, see mt_menu_bar() */
+#define MENU_GETMODE		3	   /**< Get the menu bar mode, see mt_menu_bar() */
+#define MENU_SETMODE		4	   /**< Set the menu bar mode, see mt_menu_bar() */
+#define MENU_UPDATE 		5	   /**< Update the system part of the menu bar, see mt_menu_bar() */
 #define MENU_INSTL		100    /**< Install a menu without switching the top application (Magic), see mt_menu_bar() */
 
 
 /* MENU_GETMODE and MENU_SETMODE bits */
-#define  MENU_HIDDEN	0x0001 /**< menu bar only visible when needed, see #MENU_GETMODE or #MENU_SETMODE */
-#define  MENU_PULLDOWN  0x0002 /**< Pulldown-Menus, see #MENU_GETMODE or #MENU_SETMODE */
-#define  MENU_SHADOWED  0x0004 /**< menu bar with shadows, see #MENU_GETMODE or #MENU_SETMODE */
+#define  MENU_HIDDEN		0x0001 /**< menu bar only visible when needed, see #MENU_GETMODE or #MENU_SETMODE */
+#define  MENU_PULLDOWN		0x0002 /**< Pulldown-Menus, see #MENU_GETMODE or #MENU_SETMODE */
+#define  MENU_SHADOWED		0x0004 /**< menu bar with shadows, see #MENU_GETMODE or #MENU_SETMODE */
 
 /* menu_icheck modes */
 #define UNCHECK			0	/**< remove the check mark of a menu item, see mt_menu_icheck() */
@@ -910,8 +915,8 @@ typedef struct pEvntrec
 #define REG_NEWNAME		-1	/**< register your application with a new name, see mt_menu_register() */
 
 /* menu_settings modes */
-#define MN_INQUIRE      0  /**< inquire the current menu settings, see mt_menu_settings() */
-#define MN_CHANGE       1  /**< set the menu settings, see mt_menu_settings() */
+#define MN_INQUIRE		0  /**< inquire the current menu settings, see mt_menu_settings() */
+#define MN_CHANGE		1  /**< set the menu settings, see mt_menu_settings() */
 
 /* menu_tnormal modes */
 #define HIGHLIGHT		0	/**< display the title in reverse mode, see mt_menu_tnormal() */
@@ -1012,20 +1017,20 @@ typedef  struct
 	/** last error 
 	 *  \a lasterr is the return value of the program running previously. If this 
 	 *  was a GEM program then the error will already have been displayed in an 
-	 *  alert box. It is well known that the longword is negative if the error 
-	 *  occurred with Pexec itself; a program return value always has the high 
+	 *  alert box. It is well known that the longword is negative if the error
+	 *  occurred with Pexec itself; a program return value always has the high
 	 *  word 0.
-	 */ 
+	 */
 	long    lasterr;
-	short   wasgr;		/**< Program was a grafic app. */ 
+	short   wasgr;		/**< Program was a grafic app. */
 } SHELTAIL;
 
 
 /* shel_write modes */
-/** Launch a GEM or TOS application or GEM desk accessory 
+/** Launch a GEM or TOS application or GEM desk accessory
  *  depending on the extension of the file. See mt_shel_write()
  */
-#define SWM_LAUNCH			0
+#define SWM_LAUNCH		0
 /** Launch a GEM or TOS application based on the value of \a wisgr, see mt_shel_write()
  */
 #define SWM_LAUNCHNOW		1
@@ -1033,40 +1038,40 @@ typedef  struct
 #define SWM_SHUTDOWN		4	/**< Manipulate 'Shutdown' mode, see mt_shel_write() */
 #define SWM_REZCHANGE		5	/**< Change screen resolution, see mt_shel_write() */
 #define SWM_BROADCAST		7	/**< Broadcast an AES message to all processes, see mt_shel_write() */
-#define SWM_ENVIRON			8	/**< Manipulate the AES environment, see mt_shel_write() */
+#define SWM_ENVIRON		8	/**< Manipulate the AES environment, see mt_shel_write() */
 /** Inform the AES of a new message the current application understands,
  *  see mt_shel_write()
  */
-#define SWM_NEWMSG			9	
-#define SWM_AESMSG			10	/**< Send a message to the AES, see mt_shel_write() */
+#define SWM_NEWMSG		9
+#define SWM_AESMSG		10	/**< Send a message to the AES, see mt_shel_write() */
 #define SWM_THRCREATE		20	/**< create a new thread, see mt_shel_write() */
-#define SWM_THREXIT			21	/**< thread terminates itself, see mt_shel_write() */
-#define SWM_THRKILL			22	/**< parent kills a thread, see mt_shel_write() */
+#define SWM_THREXIT		21	/**< thread terminates itself, see mt_shel_write() */
+#define SWM_THRKILL		22	/**< parent kills a thread, see mt_shel_write() */
 
 /* other names for shel_write modes */
-#define SHW_NOEXEC			SWM_LAUNCH		/**< alias */
-#define SHW_EXEC			SWM_LAUNCHNOW	/**< alias */
+#define SHW_NOEXEC		SWM_LAUNCH		/**< alias */
+#define SHW_EXEC		SWM_LAUNCHNOW	/**< alias */
 #define SHW_EXEC_ACC		SWM_LAUNCHACC	/**< alias */
 #define SHW_SHUTDOWN		SWM_SHUTDOWN	/**< alias */
-#define SHW_RESCHNG			SWM_REZCHANGE	/**< alias */
+#define SHW_RESCHNG		SWM_REZCHANGE	/**< alias */
 #define SHW_BROADCAST		SWM_BROADCAST	/**< alias */
 #define SHW_INFRECGN		SWM_NEWMSG		/**< alias */
-#define SHW_AESSEND			SWM_AESMSG		/**< alias */
+#define SHW_AESSEND		SWM_AESMSG		/**< alias */
 #define SHW_THR_CREATE		SWM_THRCREATE	/**< alias */
 #define SHW_THR_EXIT		SWM_THREXIT		/**< alias */
 #define SHW_THR_KILL		SWM_THRKILL		/**< alias */
 
 /* shel_write, parameter wisgr */
-#define TOSAPP				0  /**< application launched as TOS application, see mt_shel_write() */
-#define GEMAPP				1  /**< application launched as GEM application, see mt_shel_write() */
+#define TOSAPP			0  /**< application launched as TOS application, see mt_shel_write() */
+#define GEMAPP			1  /**< application launched as GEM application, see mt_shel_write() */
 
 /* shel_write, parameter wiscr when wodex=1 (SWM_LAUNCHNOW) */
-#define SHW_IMMED			0	/**< unsupported (PC-GEM  2.x) */
-#define SHW_CHAIN			1	/**< TOS way, see mt_shel_write() */
-#define SHW_DOS				2	/**< unsupported (PC-GEM  2.x) */
+#define SHW_IMMED		0	/**< unsupported (PC-GEM  2.x) */
+#define SHW_CHAIN		1	/**< TOS way, see mt_shel_write() */
+#define SHW_DOS			2	/**< unsupported (PC-GEM  2.x) */
 #define SHW_PARALLEL		100	/**< create a new application to be ran in parallel, see mt_shel_write() */
-#define SHW_SINGLE			101	/**< run an application in single mode (all other applications but apid 0 and 1 are frozen), see mt_shel_write() */
-	
+#define SHW_SINGLE		101	/**< run an application in single mode (all other applications but apid 0 and 1 are frozen), see mt_shel_write() */
+
 /* command line parser (shel_write: parameter "wiscr") */
 #define CL_NORMAL		0	/**< command line passed normaly, see mt_shel_write() */
 #define CL_PARSE		1	/**< command line passed in ARGV environment string, see mt_shel_write() */
@@ -1077,19 +1082,19 @@ typedef  struct
 #define SD_COMPLETE		2		/**< Complete shutdown mode, see mt_shel_write() */
 
 /* shel_write: mode SWM_ENVIRON, parameter 'wisgr' */
-#define ENVIRON_SIZE	0	/**< returns the current size of the environment string, see mt_shel_write() */
-#define ENVIRON_CHANGE	1	/**< modify an environment variable, see mt_shel_write() */
-#define ENVIRON_COPY	2	/**< copy the evironment string in a buffer, see mt_shel_write() */
+#define ENVIRON_SIZE		0	/**< returns the current size of the environment string, see mt_shel_write() */
+#define ENVIRON_CHANGE		1	/**< modify an environment variable, see mt_shel_write() */
+#define ENVIRON_COPY		2	/**< copy the evironment string in a buffer, see mt_shel_write() */
 
 /* shel_write: mode SWM_NEWMSG, parameter 'wisgr' */
 #define NM_APTERM		0x0001	/**< the application understands #AP_TERM messages, see mt_shel_write() and #SWM_NEWMSG */
-#define NM_INHIBIT_HIDE	0x0002	/**< the application won't be hidden, see mt_shel_write() and #SWM_NEWMSG */
+#define NM_INHIBIT_HIDE		0x0002	/**< the application won't be hidden, see mt_shel_write() and #SWM_NEWMSG */
 
 /* Werte fr Modus SWM_AESMSG (fr shel_write) */
 #define AP_AESTERM		52     /* Mode 10: N.AES komplett terminieren. */	/**< TODO */
 
 /* extended shel_write() modes */
-#define SW_PSETLIMIT	0x0100	/**< Initial Psetlimit() , see SHELW::psetlimit */
+#define SW_PSETLIMIT		0x0100	/**< Initial Psetlimit() , see SHELW::psetlimit */
 #define SW_PRENICE		0x0200	/**< Initial Prenice() , see SHELW::prenice */
 #define SW_DEFDIR 		0x0400	/**< Default Directory , see SHELW::defdir */
 #define SW_ENVIRON		0x0800	/**< Environment , see SHELW::env */
@@ -1099,12 +1104,12 @@ typedef  struct
 #define	SW_GID			0x2000	/**< Set group id of launched child, see SHELW::gid */
 
 /* MagiC 6 extensions for shel_write() extended modes*/
-#define SHW_XMDFLAGS	0x1000	/**< magiC 6 extension, see XSHW_COMMAND::flags*/
+#define SHW_XMDFLAGS		0x1000	/**< magiC 6 extension, see XSHW_COMMAND::flags*/
 
 /* other names... */
-#define SHW_XMDLIMIT	SW_PSETLIMIT	/**< alias */
+#define SHW_XMDLIMIT		SW_PSETLIMIT	/**< alias */
 #define SHW_XMDNICE		SW_PRENICE		/**< alias */
-#define SHW_XMDDEFDIR	SW_DEFDIR		/**< alias */
+#define SHW_XMDDEFDIR		SW_DEFDIR		/**< alias */
 #define SHW_XMDENV		SW_ENVIRON		/**< alias */
 
 /* rsrc_gaddr structure types */
@@ -1127,13 +1132,13 @@ typedef  struct
 #define R_FRIMG			16	/**< Free image, see mt_rsrc_gaddr() */
 
 /* scrap_read return values */
-#define SCRAP_CSV       0x0001  /**< clipboard has a scrap.csv file, see mt_scrap_read() */
-#define SCRAP_TXT       0x0002  /**< clipboard has a scrap.txt file, see mt_scrap_read() */
-#define SCRAP_GEM       0x0004  /**< clipboard has a scrap.gem file, see mt_scrap_read() */
-#define SCRAP_IMG       0x0008  /**< clipboard has a scrap.img file, see mt_scrap_read() */
-#define SCRAP_DCA       0x0010  /**< clipboard has a scrap.dca file, see mt_scrap_read() */
-#define SCRAP_DIF       0x0020  /**< clipboard has a scrap.dif file, see mt_scrap_read() */
-#define SCRAP_USR       0x8000  /**< clipboard has a scrap.usr file, see mt_scrap_read() */
+#define SCRAP_CSV 		0x0001  /**< clipboard has a scrap.csv file, see mt_scrap_read() */
+#define SCRAP_TXT		0x0002  /**< clipboard has a scrap.txt file, see mt_scrap_read() */
+#define SCRAP_GEM		0x0004  /**< clipboard has a scrap.gem file, see mt_scrap_read() */
+#define SCRAP_IMG		0x0008  /**< clipboard has a scrap.img file, see mt_scrap_read() */
+#define SCRAP_DCA		0x0010  /**< clipboard has a scrap.dca file, see mt_scrap_read() */
+#define SCRAP_DIF		0x0020  /**< clipboard has a scrap.dif file, see mt_scrap_read() */
+#define SCRAP_USR		0x8000  /**< clipboard has a scrap.usr file, see mt_scrap_read() */
 
 /* Window Attributes */
 #define NAME			0x0001	/**< Window has a title bar */
@@ -1160,97 +1165,100 @@ typedef  struct
 #define WC_WORK		 	1	/**< compute the work_area of a window from its extent, see mt_wind_calc() */
 
 /* wind_get flags */
-#define WF_KIND			  1		/**< get     the actual window attributes, see mt_wind_get() */
-#define WF_NAME			  2 	/**< get/set title name of the window, see mt_wind_get() and mt_wind_set() */
-#define WF_INFO			  3 	/**< get/set info line of the window, see mt_wind_get() and mt_wind_set() */
-#define WF_WORKXYWH		  4 	/**< get     the work area coordinates of the work area, see mt_wind_get() */
-#define WF_CURRXYWH		  5 	/**< get/set current coordinates of the window (external area), see mt_wind_get() and mt_wind_set()  */
-#define WF_PREVXYWH		  6 	/**< get     the previous coordinates of the window (external area), see mt_wind_get() */
-#define WF_FULLXYWH		  7 	/**< get     the coordinates of the window when "fulled" the screen, see mt_wind_get() */
-#define WF_HSLIDE 		  8 	/**< get/set position of the horizontal slider, see mt_wind_get() and mt_wind_set() */
-#define WF_VSLIDE 		  9 	/**< get/set position of the vertical slider, see mt_wind_get() and mt_wind_set() */
-#define WF_TOP 			 10 	/**< get/set top window, see mt_wind_get() and mt_wind_set() */
-#define WF_FIRSTXYWH 	 11 	/**< get     the first rectangle in the list of rectangles for this window, see mt_wind_get() */
-#define WF_NEXTXYWH		 12 	/**< get     the next rectangle in the list of rectangles for this window, see mt_wind_get() */
-#define WF_FIRSTAREAXYWH 13 	/**< get     the first rectangle in the list of rectangles for this window, see mt_wind_xget()*/
-#define WF_NEWDESK		 14 	/**< get/set OBJECT tree installed as desktop, see mt_wind_get() and mt_wind_set() */
-#define WF_HSLSIZE		 15 	/**< get/set size of the horizontal slider, see mt_wind_get() and mt_wind_set() */
-#define WF_VSLSIZE		 16 	/**< get/set size of the vertical slider, see mt_wind_get() and mt_wind_set() */
-#define WF_SCREEN 		 17 	/**< get     current AES menu/alert buffer and its size, see mt_wind_get() */
-#define WF_COLOR		 18 	/**< get/set current color of widget, see mt_wind_get() and mt_wind_set() */
-#define WF_DCOLOR 		 19 	/**< get/set default color of widget, see mt_wind_get() and mt_wind_set() */
-#define WF_OWNER		 20 	/**< get     the owner of the window, see mt_wind_get() */
-#define WF_BEVENT 		 24 	/**< get/set window feature on mouse button event, see mt_wind_get() and mt_wind_set() */
-#define WF_BOTTOM 		 25 	/**< get/set bottom window, see mt_wind_get() and mt_wind_set() */
-#define WF_ICONIFY		 26 	/**< get/set iconification of the window, see mt_wind_get() and mt_wind_set() */
-#define WF_UNICONIFY 	 27 	/**< get/set un-iconification of the window, see mt_wind_get() and mt_wind_set() */
-#define WF_UNICONIFYXYWH 28 	/**<     set window coordinates when uniconified , see mt_wind_set() */
-#define WF_TOOLBAR		 30 	/**< get/set tool bar attached to a window, see mt_wind_get() and mt_wind_set() */
-#define WF_FTOOLBAR		 31 	/**< get     the first rectangle of the toolbar area, see mt_wind_get() */
-#define WF_NTOOLBAR		 32 	/**< get     the next rectangle of the toolbar area, see mt_wind_get() */
-#define WF_MENU			 33 	/**<         TODO (XaAES) */
-#define WF_WHEEL		 40 	/**<     set window feature on mouse wheel event, see mt_wind_set() */
-#define WF_OPTS			 41		/**< get/set window options. See mt_wind_set() and mt_wind_get() for details. */
-#define WF_CALCF2W		 42		/**< Convert FULL coordinates to WORK coordinates */
-#define WF_CALCW2F		 43		/**< Convert WORK coordinates to FULL coordinates */
-#define WF_CALCF2U		 44		/**< Convert FULL coordinates to USER coordinates */
-#define WF_CALCU2F		 45		/**< Convert USER coordinates to FULL coordinates */
-#define WF_MAXWORKXYWH	 46		/**< Get MAX coordinates for this window - WCOWORK mode only*/
-#define WF_M_BACKDROP	100 	/**<		 TODO (KAOS 1.4) */
+#define WF_KIND			1	/**< get     the actual window attributes, see mt_wind_get() */
+#define WF_NAME			2 	/**< get/set title name of the window, see mt_wind_get() and mt_wind_set() */
+#define WF_INFO			3 	/**< get/set info line of the window, see mt_wind_get() and mt_wind_set() */
+#define WF_WORKXYWH		4 	/**< get     the work area coordinates of the work area, see mt_wind_get() */
+#define WF_CURRXYWH		5 	/**< get/set current coordinates of the window (external area), see mt_wind_get() and mt_wind_set()  */
+#define WF_PREVXYWH		6 	/**< get     the previous coordinates of the window (external area), see mt_wind_get() */
+#define WF_FULLXYWH		7 	/**< get     the coordinates of the window when "fulled" the screen, see mt_wind_get() */
+#define WF_HSLIDE 		8 	/**< get/set position of the horizontal slider, see mt_wind_get() and mt_wind_set() */
+#define WF_VSLIDE 		9 	/**< get/set position of the vertical slider, see mt_wind_get() and mt_wind_set() */
+#define WF_TOP 			10 	/**< get/set top window, see mt_wind_get() and mt_wind_set() */
+#define WF_FIRSTXYWH 		11 	/**< get     the first rectangle in the list of rectangles for this window, see mt_wind_get() */
+#define WF_NEXTXYWH		12 	/**< get     the next rectangle in the list of rectangles for this window, see mt_wind_get() */
+#define WF_FIRSTAREAXYWH	13 	/**< get     the first rectangle in the list of rectangles for this window, see mt_wind_xget()*/
+#define WF_NEWDESK		14 	/**< get/set OBJECT tree installed as desktop, see mt_wind_get() and mt_wind_set() */
+#define WF_HSLSIZE		15 	/**< get/set size of the horizontal slider, see mt_wind_get() and mt_wind_set() */
+#define WF_VSLSIZE		16 	/**< get/set size of the vertical slider, see mt_wind_get() and mt_wind_set() */
+#define WF_SCREEN 		17 	/**< get     current AES menu/alert buffer and its size, see mt_wind_get() */
+#define WF_COLOR		18 	/**< get/set current color of widget, see mt_wind_get() and mt_wind_set() */
+#define WF_DCOLOR 		19 	/**< get/set default color of widget, see mt_wind_get() and mt_wind_set() */
+#define WF_OWNER		20 	/**< get     the owner of the window, see mt_wind_get() */
+#define WF_BEVENT 		24 	/**< get/set window feature on mouse button event, see mt_wind_get() and mt_wind_set() */
+#define WF_BOTTOM 		25 	/**< get/set bottom window, see mt_wind_get() and mt_wind_set() */
+#define WF_ICONIFY		26 	/**< get/set iconification of the window, see mt_wind_get() and mt_wind_set() */
+#define WF_UNICONIFY 		27 	/**< get/set un-iconification of the window, see mt_wind_get() and mt_wind_set() */
+#define WF_UNICONIFYXYWH	28 	/**<     set window coordinates when uniconified , see mt_wind_set() */
+#define WF_TOOLBAR		30 	/**< get/set tool bar attached to a window, see mt_wind_get() and mt_wind_set() */
+#define WF_FTOOLBAR		31 	/**< get     the first rectangle of the toolbar area, see mt_wind_get() */
+#define WF_NTOOLBAR		32 	/**< get     the next rectangle of the toolbar area, see mt_wind_get() */
+#define WF_MENU			33 	/**<         TODO (XaAES) */
+#define WF_WHEEL		40 	/**<     set window feature on mouse wheel event, see mt_wind_set() */
+#define WF_OPTS			41		/**< get/set window options. See mt_wind_set() and mt_wind_get() for details. */
+#define WF_CALCF2W		42		/**< Convert FULL coordinates to WORK coordinates */
+#define WF_CALCW2F		43		/**< Convert WORK coordinates to FULL coordinates */
+#define WF_CALCF2U		44		/**< Convert FULL coordinates to USER coordinates */
+#define WF_CALCU2F		45		/**< Convert USER coordinates to FULL coordinates */
+#define WF_MAXWORKXYWH		46		/**< Get MAX coordinates for this window - WCOWORK mode only*/
+#define WF_M_BACKDROP		100 	/**<		 TODO (KAOS 1.4) */
 #define WF_M_OWNER		101 	/**<		 TODO (KAOS 1.4) */
-#define WF_M_WINDLIST	102 	/**<		 TODO (KAOS 1.4) */
+#define WF_M_WINDLIST		102 	/**<		 TODO (KAOS 1.4) */
 #define WF_MINXYWH		103 	/**<		 TODO (MagiC 6) */
 #define WF_INFOXYWH		104 	/**<		 TODO (MagiC 6.10) */
 #define WF_WIDGETS		200		/**< get/set actual positions of the slider widgets, see mt_wind_get() and mt_wind_set() */
-#define WF_230			230		/**< internally used by MyAES - doc TODO */
-#define WF_231			231		/**< internally used by MyAES - doc TODO */
-#define WF_TOPMOST		232		/**<     set actual window at TOPMOST level, see  mt_wind_set() */
+#define WF_USER_POINTER		230		/**< MyAES - attach a 32 bit value to window see  mt_wind_set() see  mt_wind_get() */
+#define WF_WIND_ATTACH		231		/**< MyAES - attach a window to another, see  mt_wind_set()*/
+#define WF_TOPMOST		232		/**< MyAES    set actual window at TOPMOST level, see  mt_wind_set() */
+#define WF_BITMAP		233		/**< MyAES 0.96	get bitmap of the window, see  mt_wind_get() */
+#define WF_OPTIONS		234		/**< MyAES 0.96 at this time use only to request automaticaly close if application lost focus and appear when focus is back, see  mt_wind_set() */
+#define WF_FULLSCREEN		235		/**< MyAES 0.96 set window in fullscreen without widget, see  mt_wind_set() */
 #define WF_OBFLAG		1001	/**< get/set (doc: TODO) (FreeGEM) */
 #define WF_OBTYPE		1002	/**< get     (doc: TODO) (FreeGEM) */
 #define WF_OBSPEC		1003	/**< get/set (doc: TODO) (FreeGEM) */
 #define X_WF_MENU		4352	/**<     set (doc: TODO) (Geneva)  */
 #define X_WF_DIALOG		4608	/**<     set (doc: TODO) (Geneva)  */
-#define X_WF_DIALWID	4864	/**<     set (doc: TODO) (Geneva)  */
+#define X_WF_DIALWID		4864	/**<     set (doc: TODO) (Geneva)  */
 #define X_WF_DIALHT		5120	/**<     set (doc: TODO) (Geneva)  */
-#define X_WF_DFLTDESK	5376	/**<     set (doc: TODO) (Geneva)  */
+#define X_WF_DFLTDESK		5376	/**<     set (doc: TODO) (Geneva)  */
 #define X_WF_MINMAX		5632	/**< get/set (doc: TODO) (Geneva)  */
 #define X_WF_HSPLIT		5888	/**< get/set (doc: TODO) (Geneva)  */
 #define X_WF_VSPLIT		6144	/**< get/set (doc: TODO) (Geneva)  */
 #define X_WF_SPLMIN		6400	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_HSLIDE2	6656	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_VSLIDE2	6144	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_HSLSIZE2	7168	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_VSLSIZE2	7424	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_DIALFLGS	7680	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_OBJHAND	7936	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_DIALEDIT	9182	/**< get/set (doc: TODO) (Geneva)  */
-#define X_WF_DCOLSTAT	8448	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_HSLIDE2		6656	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_VSLIDE2		6144	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_HSLSIZE2		7168	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_VSLSIZE2		7424	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_DIALFLGS		7680	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_OBJHAND		7936	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_DIALEDIT		9182	/**< get/set (doc: TODO) (Geneva)  */
+#define X_WF_DCOLSTAT		8448	/**< get/set (doc: TODO) (Geneva)  */
 #define WF_WINX			22360	/**<		 TODO */
 #define WF_WINXCFG		22361	/**<		 TODO */
 #define WF_DDELAY		22362	/**<		 TODO */
-#define WF_SHADE	    22365	/**<		 TODO (WINX 2.3) */
+#define WF_SHADE		22365	/**<		 TODO (WINX 2.3) */
 #define WF_STACK		22366	/**<		 TODO (WINX 2.3) */
 #define WF_TOPALL		22367	/**<		 TODO (WINX 2.3) */
-#define WF_BOTTOMALL	22368	/**<		 TODO (WINX 2.3) */
+#define WF_BOTTOMALL		22368	/**<		 TODO (WINX 2.3) */
 #define WF_XAAES		0x5841	/**<		 TODO (XaAES) : 'XA' */
 
 /* wind_set(WF_BEVENT) */
-#define BEVENT_WORK     0x0001    /**< window not topped when click on the work area, see #WF_BEVENT */
-#define BEVENT_INFO     0x0002    /**< ?????, see #WF_BEVENT */
+#define BEVENT_WORK		0x0001    /**< window not topped when click on the work area, see #WF_BEVENT */
+#define BEVENT_INFO		0x0002    /**< ?????, see #WF_BEVENT */
 
 /* wind_set(WF_OPTS) bitmask flags */
 #define WO0_WHEEL		0x0001  /**< see mt_wind_set() with #WF_OPTS mode */
-#define WO0_FULLREDRAW	0x0002  /**< see mt_wind_set() with #WF_OPTS mode */
+#define WO0_FULLREDRAW		0x0002  /**< see mt_wind_set() with #WF_OPTS mode */
 #define WO0_NOBLITW		0x0004  /**< see mt_wind_set() with #WF_OPTS mode */
 #define WO0_NOBLITH		0x0008  /**< see mt_wind_set() with #WF_OPTS mode */
-#define WO0_SENDREPOS	0x0010  /**< see mt_wind_set() with #WF_OPTS mode */
-#define WO1_NONE        0x0000  /**< see mt_wind_set() with #WF_OPTS mode */
-#define WO2_NONE        0x0000  /**< see mt_wind_set() with #WF_OPTS mode */
+#define WO0_SENDREPOS		0x0010  /**< see mt_wind_set() with #WF_OPTS mode */
+#define WO1_NONE		0x0000  /**< see mt_wind_set() with #WF_OPTS mode */
+#define WO2_NONE		0x0000  /**< see mt_wind_set() with #WF_OPTS mode */
 
 /* wind_set(WF_WHEEL) modes */
 #define WHEEL_MESAG		0	/**< AES will send #WM_WHEEL messages */
-#define WHEEL_ARROWED	1   /**< AES will send #WM_ARROWED messages */
-#define WHEEL_SLIDER	2   /**< AES will convert mouse wheel events to slider events */
+#define WHEEL_ARROWED		1   /**< AES will send #WM_ARROWED messages */
+#define WHEEL_SLIDER		2   /**< AES will convert mouse wheel events to slider events */
 
 /* window elements */
 #define W_BOX			0	/**< widget index of ???, see #WF_COLOR */
@@ -1298,21 +1306,21 @@ typedef  struct
 #define ARROW			 0	/**< see mt_graf_mouse() */
 #define TEXT_CRSR 		 1	/**< see mt_graf_mouse() */
 #define BEE 			 2	/**< see mt_graf_mouse() */
-#define BUSY_BEE	  BEE 	/**< alias for #BEE */
-#define BUSYBEE		  BEE 	/**< alias for #BEE */
+#define BUSY_BEE		BEE 	/**< alias for #BEE */
+#define BUSYBEE			BEE 	/**< alias for #BEE */
 #define HOURGLASS 		 2	/**< see mt_graf_mouse() */
 #define POINT_HAND		 3	/**< see mt_graf_mouse() */
 #define FLAT_HAND 		 4	/**< see mt_graf_mouse() */
 #define THIN_CROSS		 5	/**< see mt_graf_mouse() */
 #define THICK_CROSS		 6	/**< see mt_graf_mouse() */
 #define OUTLN_CROSS		 7	/**< see mt_graf_mouse() */
-#define USER_DEF		  255	/**< see mt_graf_mouse() */
-#define M_OFF			  256	/**< see mt_graf_mouse() */
-#define M_ON			  257	/**< see mt_graf_mouse() */
-#define M_SAVE 			  258	/**< see mt_graf_mouse() */
-#define M_RESTORE 		  259	/**< see mt_graf_mouse() */
-#define M_LAST 			  260	/**< see mt_graf_mouse() */
-#define M_PREVIOUS        M_LAST /**< alias for #M_LAST */
+#define USER_DEF		255	/**< see mt_graf_mouse() */
+#define M_OFF			256	/**< see mt_graf_mouse() */
+#define M_ON			257	/**< see mt_graf_mouse() */
+#define M_SAVE 			258	/**< see mt_graf_mouse() */
+#define M_RESTORE 		259	/**< see mt_graf_mouse() */
+#define M_LAST 			260	/**< see mt_graf_mouse() */
+#define M_PREVIOUS		M_LAST /**< alias for #M_LAST */
 #define M_FORCE			0x8000	/**< see mt_graf_mouse() */
 
 /* objects - general */
@@ -1334,7 +1342,7 @@ typedef  struct
 #define GDOS_PROP		0	/**< TODO */
 #define GDOS_MONO		1	/**< TODO */
 #define GDOS_BITM		2	/**< TODO */
-#define IBM				3	/**< TODO */
+#define IBM			3	/**< TODO */
 #define SMALL			5	/**< TODO */
 
 /* object types */
@@ -1363,14 +1371,14 @@ typedef  struct
 
 
 /* object flags */
-#define OF_NONE		 	0x0000	/**< TODO */
-#define OF_SELECTABLE	0x0001	/**< TODO */
+#define OF_NONE			0x0000	/**< TODO */
+#define OF_SELECTABLE		0x0001	/**< TODO */
 #define OF_DEFAULT		0x0002	/**< TODO */
 #define OF_EXIT			0x0004	/**< TODO */
 #define OF_EDITABLE		0x0008	/**< TODO */
 #define OF_RBUTTON		0x0010	/**< TODO */
 #define OF_LASTOB		0x0020	/**< TODO */
-#define OF_TOUCHEXIT	0x0040	/**< TODO */
+#define OF_TOUCHEXIT		0x0040	/**< TODO */
 #define OF_HIDETREE		0x0080	/**< TODO */
 #define OF_INDIRECT		0x0100	/**< TODO */
 #define OF_FL3DIND		0x0200	/* bit 9 */	/**< TODO */
@@ -1466,7 +1474,7 @@ typedef  struct
 /* Object colors - default pall. */
 #define WHITE			0	/**< TODO */
 #define BLACK			1	/**< TODO */
-#define RED				2	/**< TODO */
+#define RED			2	/**< TODO */
 #define GREEN			3	/**< TODO */
 #define BLUE			4	/**< TODO */
 #define CYAN			5	/**< TODO */
@@ -1617,20 +1625,20 @@ typedef struct text_edinfo
 /** TODO */
 typedef struct icon_block
 {
-	short		*ib_pmask;			/**< TODO */
-	short		*ib_pdata;			/**< TODO */
-	char		*ib_ptext;			/**< TODO */
-	short		ib_char;			/**< TODO */
-	short		ib_xchar;			/**< TODO */
-	short		ib_ychar;			/**< TODO */
-	short		ib_xicon;			/**< TODO */
-	short		ib_yicon;			/**< TODO */
-	short		ib_wicon;			/**< TODO */
-	short		ib_hicon;			/**< TODO */
-	short		ib_xtext;			/**< TODO */
-	short		ib_ytext;			/**< TODO */
-	short		ib_wtext;			/**< TODO */
-	short		ib_htext;			/**< TODO */
+	short		*ib_pmask;			/**< Ptr to the icon mask*/
+	short		*ib_pdata;			/**< Ptr to the icon image */
+	char		*ib_ptext;			/**< Ptr to the icon text */
+	short		ib_char;			/**< Icon character, foreground and background color \n Bits : \n 15-12 Icon foreground color\n 11-8 Icon Background color \n 7-0 ASCCI value of the Character to be displayed*/
+	short		ib_xchar;			/**< X coordinate of the character */
+	short		ib_ychar;			/**< Y coordinate of the character */
+	short		ib_xicon;			/**< X coordinate of the icon */
+	short		ib_yicon;			/**< Y coordinate of the icon */
+	short		ib_wicon;			/**< Width of the icon */
+	short		ib_hicon;			/**< Height of the icon */
+	short		ib_xtext;			/**< X coordinate of the text (relative to the position of the icon) */
+	short		ib_ytext;			/**< Y coordinate of the text (relative to the position of the icon)*/
+	short		ib_wtext;			/**< Width in pixels of the text */
+	short		ib_htext;			/**< Height in pixels of the text */
 } ICONBLK;
 
 /** TODO */
@@ -1647,19 +1655,19 @@ typedef struct bit_block
 /** TODO */
 typedef struct cicon_data
 {
-	short 		num_planes;			/**< TODO */
-	short 		*col_data;			/**< TODO */
-	short 		*col_mask;			/**< TODO */
-	short 		*sel_data;			/**< TODO */
-	short 		*sel_mask;			/**< TODO */
-	struct cicon_data *next_res;	/**< TODO */
+	short 		num_planes;			/**< Number of color planes */
+	short 		*col_data;			/**< Ptr to colour bitmap in standard form */
+	short 		*col_mask;			/**< Ptr to individual colour plane mask (1 bit)*/
+	short 		*sel_data;			/**< Ptr to colour bitmap of selected icon in standard format */
+	short 		*sel_mask;			/**< Ptr to individual plane mask of the icon (1 bit)*/
+	struct cicon_data *next_res;	/**< Next resolution definition of the icon*/
 } CICON;
 
 /** TODO */
 typedef struct cicon_blk
 {
-	ICONBLK		monoblk;			/**< TODO */
-	CICON 		*mainlist;			/**< TODO */
+	ICONBLK		monoblk;			/**< ICONBLK definition (B&W icon) */
+	CICON 		*mainlist;			/**< list of the different color icon resolution */
 } CICONBLK;
 
 /** TODO */
@@ -1845,6 +1853,7 @@ short	mt_appl_tplay   (void *mem, short num, short scale, short *global_aes);
 short	mt_appl_trecord (void *mem, short count, short *global_aes);
 short	mt_appl_write   (short ap_id, short length, void *ap_pbuff, short *global_aes);
 short	mt_appl_yield   (short *global_aes);
+short   mt_appl_get_cicon (short type,const char *name,short size,short *cicon_width,short *cicon_height,CICON **cicon_data, short *global_aes);
 /**@}*/
 
 /** @addtogroup a_evnt
@@ -2124,15 +2133,15 @@ extern void aes (AESPB *pb);
 
 /* v_bez modes */
 #define BEZ_BEZIER		0x01	/**< TODO */
-#define BEZ_POLYLINE	0x00	/**< TODO */
+#define BEZ_POLYLINE		0x00	/**< TODO */
 #define BEZ_NODRAW		0x02	/**< TODO */
 
 /* v_bit_image modes */
 #define IMAGE_LEFT		0	/**< TODO */
-#define IMAGE_CENTER	1	/**< TODO */
+#define IMAGE_CENTER		1	/**< TODO */
 #define IMAGE_RIGHT		2	/**< TODO */
 #define IMAGE_TOP 		0	/**< TODO */
-#define IMAGE_BOTTOM	2	/**< TODO */
+#define IMAGE_BOTTOM		2	/**< TODO */
 
 /* v_justified modes */
 #define NOJUSTIFY		0	/**< TODO */
@@ -2188,9 +2197,9 @@ extern void aes (AESPB *pb);
 #define ROUND			2	/**< TODO */
 
 /* other names */
-#define LE_SQUARED	SQUARE	/**< TODO */
-#define LE_ARROWED	ARROWED	/**< TODO */
-#define LE_ROUNDED	ROUND	/**< TODO */
+#define LE_SQUARED		SQUARE	/**< TODO */
+#define LE_ARROWED		ARROWED	/**< TODO */
+#define LE_ROUNDED		ROUND	/**< TODO */
 
 /* vsl_type modes */
 #define SOLID			1	/**< TODO */
@@ -2207,27 +2216,27 @@ extern void aes (AESPB *pb);
 #define LT_DOTTED		DOTTED		/**< TODO */
 #define LT_DASHDOT		DASHDOT		/**< TODO */
 #define LT_DASHED		DASH		/**< TODO */
-#define LT_DASHDOTDOT	DASHDOTDOT	/**< TODO */
+#define LT_DASHDOTDOT		DASHDOTDOT	/**< TODO */
 #define LT_USERDEF		USERLINE	/**< TODO */
 #define LONGDASH		LDASHED		/**< TODO */
-#define DOT				DOTTED		/**< TODO */
+#define DOT			DOTTED		/**< TODO */
 #define DASH2DOT		DASHDOTDOT	/**< TODO */
 
 /* vsm_type modes */
 #define MRKR_DOT		1	/**< TODO */
 #define MRKR_PLUS 		2	/**< TODO */
-#define MRKR_ASTERISK	3	/**< TODO */
+#define MRKR_ASTERISK		3	/**< TODO */
 #define MRKR_BOX		4	/**< TODO */
 #define MRKR_CROSS		5	/**< TODO */
-#define MRKR_DIAMOND	6	/**< TODO */
+#define MRKR_DIAMOND		6	/**< TODO */
 
 /* other names */
-#define MT_DOT		MRKR_DOT		/**< TODO */
-#define MT_PLUS		MRKR_PLUS		/**< TODO */
-#define MT_ASTERISK	MRKR_ASTERISK	/**< TODO */
-#define MT_SQUARE	MRKR_BOX		/**< TODO */
-#define MT_DCROSS	MRKR_CROSS		/**< TODO */
-#define MT_DIAMOND	MRKR_DIAMOND	/**< TODO */
+#define MT_DOT			MRKR_DOT		/**< TODO */
+#define MT_PLUS			MRKR_PLUS		/**< TODO */
+#define MT_ASTERISK		MRKR_ASTERISK	/**< TODO */
+#define MT_SQUARE		MRKR_BOX		/**< TODO */
+#define MT_DCROSS		MRKR_CROSS		/**< TODO */
+#define MT_DIAMOND		MRKR_DIAMOND	/**< TODO */
 
 /* vst_alignment modes */
 #define TA_LEFT         	0 /* horizontal */	/**< TODO */
@@ -2241,47 +2250,47 @@ extern void aes (AESPB *pb);
 #define TA_TOP          	5	/**< TODO */
 
 /* vst_charmap modes */
-#define MAP_BITSTREAM   0	/**< TODO */
-#define MAP_ATARI       1	/**< TODO */
-#define MAP_UNICODE     2 /* for vst_map_mode, NVDI 4 */	/**< TODO */
+#define MAP_BITSTREAM		0	/**< TODO */
+#define MAP_ATARI		1	/**< TODO */
+#define MAP_UNICODE		2 /* for vst_map_mode, NVDI 4 */	/**< TODO */
 
 /* vst_effects modes */
 #define TXT_NORMAL		0x0000	/**< TODO */
-#define TXT_THICKENED	0x0001	/**< TODO */
+#define TXT_THICKENED		0x0001	/**< TODO */
 #define TXT_LIGHT		0x0002	/**< TODO */
 #define TXT_SKEWED		0x0004	/**< TODO */
-#define TXT_UNDERLINED	0x0008	/**< TODO */
-#define TXT_OUTLINED	0x0010	/**< TODO */
-#define TXT_SHADOWED	0x0020	/**< TODO */
+#define TXT_UNDERLINED		0x0008	/**< TODO */
+#define TXT_OUTLINED		0x0010	/**< TODO */
+#define TXT_SHADOWED		0x0020	/**< TODO */
 
 /* other names */
 #define	TF_NORMAL		TXT_NORMAL		/**< TODO */
-#define TF_THICKENED	TXT_THICKENED	/**< TODO */
-#define TF_LIGHTENED	TXT_LIGHT		/**< TODO */
+#define TF_THICKENED		TXT_THICKENED	/**< TODO */
+#define TF_LIGHTENED		TXT_LIGHT		/**< TODO */
 #define TF_SLANTED		TXT_SKEWED		/**< TODO */
-#define TF_UNDERLINED	TXT_UNDERLINED	/**< TODO */
+#define TF_UNDERLINED		TXT_UNDERLINED	/**< TODO */
 #define TF_OUTLINED		TXT_OUTLINED	/**< TODO */
 #define TF_SHADOWED		TXT_SHADOWED	/**< TODO */
 
 
 /* vst_error modes */
 #define APP_ERROR		0	/**< TODO */
-#define SCREEN_ERROR	1	/**< TODO */
+#define SCREEN_ERROR		1	/**< TODO */
 
 /* vst_error return values */
 #define NO_ERROR		0		/**< TODO */
-#define CHAR_NOT_FOUND	1		/**< TODO */
-#define FILE_READERR 	8		/**< TODO */
-#define FILE_OPENERR 	9		/**< TODO */
+#define CHAR_NOT_FOUND		1		/**< TODO */
+#define FILE_READERR 		8		/**< TODO */
+#define FILE_OPENERR 		9		/**< TODO */
 #define BAD_FORMAT		10		/**< TODO */
 #define CACHE_FULL		11		/**< TODO */
 #define MISC_ERROR		(-1)	/**< TODO */
 
 /* vst_kern tmodes */
 #define TRACK_NONE		0	/**< TODO */
-#define TRACK_NORMAL 	1	/**< TODO */
+#define TRACK_NORMAL 		1	/**< TODO */
 #define TRACK_TIGHT		2	/**< TODO */
-#define TRACK_VERYTIGHT	3	/**< TODO */
+#define TRACK_VERYTIGHT		3	/**< TODO */
 
 /* vst_kern pmodes */
 #define PAIR_OFF		0	/**< TODO */
@@ -2361,7 +2370,9 @@ short vsm_type   (VdiHdl , short symbol);
 void  vst_alignment (VdiHdl , short hin, short vin, short *hout, short *vout);
 short vst_color     (VdiHdl , short color_idx);
 short vst_effects   (VdiHdl , short effects);
+
 void  vst_error     (VdiHdl , short mode, short *errorvar);
+
 short vst_font      (VdiHdl , short font);
 void  vst_height    (VdiHdl , short height, short *charw, short *charh,
                                             short *cellw, short *cellh);
@@ -2369,7 +2380,72 @@ short vst_point     (VdiHdl , short point, short *charw, short *charh,
                                            short *cellw, short *cellh);
 short vst_rotation  (VdiHdl , short ang);
 void  vst_scratch   (VdiHdl , short mode);
+
 /**@}*/
+
+
+/** UDEF version of vs_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_color vs_color
+/** UDEF version of vswr_mode(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vswr_mode vswr_mode
+
+/** UDEF version of vsf_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsf_color vsf_color
+/** UDEF version of vsf_interior(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsf_interior vsf_interior
+/** UDEF version of vsf_perimeter(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsf_perimeter vsf_perimeter
+/** UDEF version of vsf_xperimeter(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsf_xperimeter vsf_xperimeter
+/** UDEF version of vsf_style(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsf_style vsf_style
+/** UDEF version of vsf_udpat(). See \ref overviewUDEF for details about UDEF feature */
+#define  udef_vsf_udpat vsf_udpat
+
+/** UDEF version of vsl_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsl_color vsl_color
+/** UDEF version of vsl_ends(). See \ref overviewUDEF for details about UDEF feature */
+#define  udef_vsl_ends vsl_ends
+/** UDEF version of vsl_type(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsl_type vsl_type
+/** UDEF version of vsl_udsty(). See \ref overviewUDEF for details about UDEF feature */
+#define  udef_vsl_udsty vsl_udsty
+/** UDEF version of vsl_width(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsl_width vsl_width
+
+/** UDEF version of vsm_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_color vsm_color
+/** UDEF version of vsm_height(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_height vsm_height
+/** UDEF version of vsm_type(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_type vsm_type
+
+/** UDEF version of vst_alignment(). See \ref overviewUDEF for details about UDEF feature */
+#define  udef_vst_alignment vst_alignment
+/** UDEF version of vst_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_color vst_color
+/** UDEF version of vst_effects(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_effects vst_effects
+
+/** @ingroup force_udef */
+void  udef_vst_error     (VdiHdl , short mode, short *errorvar);
+
+/** UDEF version of vst_font(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_font vst_font
+/** UDEF version of vst_height(). See \ref overviewUDEF for details about UDEF feature */
+#define  udef_vst_height vst_height
+/** UDEF version of vst_point(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_point vst_point
+/** UDEF version of vst_rotation(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_rotation vst_rotation
+/** UDEF version of vst_scratch(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_scratch vst_scratch
+
+
+#ifdef FORCE_GEMLIB_UDEF
+#define vst_error udef_vst_error
+#endif
+
 
 /*
  * control functions
@@ -2395,6 +2471,42 @@ short vst_load_fonts   (VdiHdl , short /* select */);
 void  vst_unload_fonts (VdiHdl , short /* select */);
 /**@}*/
 
+/** UDEF version of v_clrwk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_clrwk v_clrwk
+/** UDEF version of v_clsvwk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_clsvwk v_clsvwk
+/** UDEF version of v_clswk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_clswk v_clswk
+/** UDEF version of v_flushcache(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_flushcache v_flushcache
+/** @ingroup force_udef */
+short udef_v_loadcache      (VdiHdl , const char *filename, short mode);
+/** UDEF version of v_opnvwk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_opnvwk v_opnvwk
+/** UDEF version of v_opnwk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_opnwk v_opnwk
+/** @ingroup force_udef */
+short udef_v_savecache      (VdiHdl , const char *filename);
+/** UDEF version of v_set_app_buff(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_set_app_buff v_set_app_buff
+/** UDEF version of v_updwk(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_updwk v_updwk
+/** UDEF version of vs_clip(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_clip vs_clip
+/** UDEF version of vs_clip_pxy(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_clip_pxy vs_clip_pxy
+/** UDEF version of vs_clip_off(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_clip_off vs_clip_off
+/** UDEF version of vst_load_fonts(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_load_fonts vst_load_fonts
+/** UDEF version of vst_unload_fonts(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vst_unload_fonts vst_unload_fonts
+
+#ifdef FORCE_GEMLIB_UDEF
+#define v_loadcache udef_v_loadcache
+#define v_savecache udef_v_savecache
+#endif
+
 /*
  * escape functions
  */
@@ -2402,9 +2514,12 @@ void  vst_unload_fonts (VdiHdl , short /* select */);
 /** @addtogroup v_escp
  *  @{
  */
+
+
 void  v_bit_image       (VdiHdl , const char *filename, short aspect,
                                   short x_scale, short y_scale,
                                   short h_align, short v_align, short *pxy);
+
 void  v_clear_disp_list (VdiHdl );
 short v_copies          (VdiHdl , short count);
 void  v_dspcur          (VdiHdl , short x, short y);
@@ -2441,6 +2556,7 @@ void v_meta_extents (VdiHdl , short min_x, short min_y,
 void v_write_meta   (VdiHdl , short numvdi_intin, short *avdi_intin,
                               short num_ptsin, short *a_ptsin);
 void vm_coords      (VdiHdl , short llx, short lly, short urx, short ury);
+
 void vm_filename    (VdiHdl , const char *filename);
 void vm_pagesize    (VdiHdl , short pgwidth, short pgheight);
 
@@ -2454,11 +2570,13 @@ void v_fontinit		(VdiHdl , const void * font_header);
 void v_escape2000 (VdiHdl , short times);
 
 void v_alpha_text  (VdiHdl , const char *str);
+void v_alpha_text16n  (VdiHdl , const short * wstr, short num);
 void v_curdown     (VdiHdl );
 void v_curhome     (VdiHdl );
 void v_curleft     (VdiHdl );
 void v_curright    (VdiHdl );
 void v_curtext     (VdiHdl , const char *str);
+void v_curtext16n     (VdiHdl , const short * wstr, short num);
 void v_curup       (VdiHdl );
 void v_eeol        (VdiHdl );
 void v_eeos        (VdiHdl );
@@ -2471,7 +2589,136 @@ void vq_curaddress (VdiHdl , short *cur_row, short *cur_col);
 void vs_curaddress (VdiHdl , short row, short col);
 /** alternative name for vs_curaddress */
 #define v_curaddress vs_curaddress
+
 /**@}*/
+
+/** @ingroup force_udef */
+void  udef_v_bit_image       (VdiHdl , const char *filename, short aspect,
+                                  short x_scale, short y_scale,
+                                  short h_align, short v_align, short *pxy);
+
+/** UDEF version of v_clear_disp_list(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_clear_disp_list v_clear_disp_list
+/** UDEF version of v_copies(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_copies v_copies
+/** UDEF version of v_dspcur(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_dspcur v_dspcur
+/** UDEF version of v_form_adv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_form_adv v_form_adv
+/** UDEF version of v_hardcopy(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_hardcopy v_hardcopy
+/** UDEF version of v_orient(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_orient v_orient
+/** UDEF version of v_output_window(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_output_window v_output_window
+/** UDEF version of v_page_size(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_page_size v_page_size
+/** UDEF version of v_rmcur(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_rmcur v_rmcur
+/** UDEF version of v_trays(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_trays v_trays
+/** UDEF version of vq_calibrate(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_calibrate vq_calibrate
+/** UDEF version of vq_page_name(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_page_name vq_page_name
+/** UDEF version of vq_scan(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_scan vq_scan
+/** UDEF version of vq_tabstatus(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_tabstatus vq_tabstatus
+/** UDEF version of vq_tray_names(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_tray_names vq_tray_names
+/** UDEF version of vs_calibrate(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_calibrate vs_calibrate
+/** UDEF version of vs_palette(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_palette vs_palette
+
+/** UDEF version of v_sound(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_sound v_sound
+/** UDEF version of vs_mute(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_mute vs_mute
+
+/** UDEF version of vq_tdimensions(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_tdimensions vq_tdimensions
+/** UDEF version of vt_alignment(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vt_alignment vt_alignment
+/** UDEF version of vt_axis(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vt_axis vt_axis
+/** UDEF version of vt_origin(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vt_origin vt_origin
+/** UDEF version of vt_resolution(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vt_resolution vt_resolution
+
+/** UDEF version of v_meta_extents(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_meta_extents v_meta_extents
+/** UDEF version of v_write_meta(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_write_meta v_write_meta
+/** UDEF version of vm_coords(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vm_coords vm_coords
+/** @ingroup force_udef */
+void udef_vm_filename    (VdiHdl , const char *filename);
+/** UDEF version of vm_pagesize(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vm_pagesize vm_pagesize
+
+/** UDEF version of vsc_expose(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsc_expose vsc_expose
+/** UDEF version of vsp_film(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsp_film vsp_film
+/** UDEF version of vqp_filmname(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqp_filmname vqp_filmname
+
+/** UDEF version of v_offset(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_offset v_offset
+/** UDEF version of v_fontinit(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_fontinit v_fontinit
+
+/** UDEF version of v_escape2000(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_escape2000 v_escape2000
+
+/** @ingroup force_udef */
+void udef_v_alpha_text  (VdiHdl , const char *str);
+/** UDEF version of v_alpha_text16n(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_alpha_text16n v_alpha_text16n
+/** UDEF version of v_curdown(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curdown v_curdown
+/** UDEF version of v_curhome(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curhome v_curhome
+/** UDEF version of v_curleft(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curleft v_curleft
+/** UDEF version of v_curright(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curright v_curright
+/** @ingroup force_udef */
+void udef_v_curtext     (VdiHdl , const char *str);
+/** UDEF version of v_curtext16n(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curtext16n v_curtext16n
+/** UDEF version of v_curup(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curup v_curup
+/** UDEF version of v_eeol(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_eeol v_eeol
+/** UDEF version of v_eeos(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_eeos v_eeos
+/** UDEF version of v_enter_cur(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_enter_cur v_enter_cur
+/** UDEF version of v_exit_cur(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_exit_cur v_exit_cur
+/** UDEF version of v_rvoff(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_rvoff v_rvoff
+/** UDEF version of v_rvon(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_rvon v_rvon
+/** UDEF version of vq_chcells(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_chcells vq_chcells
+/** UDEF version of vq_curaddress(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_curaddress vq_curaddress
+/** UDEF version of vs_curaddress(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vs_curaddress vs_curaddress
+/** UDEF version of vs_curaddress(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_curaddress udef_vs_curaddress
+
+#ifdef FORCE_GEMLIB_UDEF
+#define v_bit_image udef_v_bit_image
+#define vm_filename udef_vm_filename
+#define v_alpha_text udef_v_alpha_text
+#define v_curtext udef_v_curtext
+#endif
  
 
 /*
@@ -2509,6 +2756,49 @@ long  vq_vgdos (void);
 /**@}*/
 
 
+/** UDEF version of vq_cellarray(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_cellarray vq_cellarray
+/** UDEF version of vq_color(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_color vq_color
+/** UDEF version of vq_extnd(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_extnd vq_extnd
+/** UDEF version of vqf_attributes(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqf_attributes vqf_attributes
+/** UDEF version of vqin_mode(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqin_mode vqin_mode
+/** UDEF version of vql_attributes(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vql_attributes vql_attributes
+/** UDEF version of vqm_attributes(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqm_attributes vqm_attributes
+/** UDEF version of vqt_attributes(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_attributes vqt_attributes
+/** UDEF version of vqt_cachesize(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_cachesize vqt_cachesize
+/** @ingroup force_udef */
+void  udef_vqt_extent     (VdiHdl , const char *str, short extent[]);
+/** UDEF version of vqt_extent16(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_extent16 vqt_extent16
+/** UDEF version of vqt_extent16n(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_extent16n vqt_extent16n
+/** UDEF version of vqt_fontinfo(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_fontinfo vqt_fontinfo
+/** UDEF version of vqt_get_table(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_get_table vqt_get_table
+/** UDEF version of vqt_name(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_name vqt_name
+/** UDEF version of vqt_width(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vqt_width vqt_width
+/** UDEF version of vq_gdos(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_gdos vq_gdos
+/** UDEF version of vq_vgdos(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_vgdos vq_vgdos
+
+#ifdef FORCE_GEMLIB_UDEF
+#define vqt_extent udef_vqt_extent
+#endif
+
+
+
 /*
  * input function
  */
@@ -2541,6 +2831,53 @@ void  vsm_valuator (VdiHdl , short in, short *out, short *term, short *status);
 /**@}*/
 
 
+/** UDEF version of v_hide_c(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_hide_c v_hide_c
+/** UDEF version of v_show_c(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_show_c v_show_c
+/** UDEF version of vex_butv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vex_butv vex_butv
+/** UDEF version of vex_curv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vex_curv vex_curv
+/** UDEF version of vex_motv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vex_motv vex_motv
+/** UDEF version of vex_wheelv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vex_wheelv vex_wheelv
+/** UDEF version of vex_timv(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vex_timv vex_timv
+/** UDEF version of vq_key_s(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_key_s vq_key_s
+/** UDEF version of vq_mouse(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vq_mouse vq_mouse
+/** UDEF version of vrq_choice(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vrq_choice vrq_choice
+/** UDEF version of vrq_locator(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vrq_locator vrq_locator
+/** @ingroup force_udef */
+void  udef_vrq_string   (VdiHdl , short len, short echo, short echoxy[], char *str);
+/** UDEF version of vrq_valuator(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vrq_valuator vrq_valuator
+/** UDEF version of vsc_form(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsc_form vsc_form
+/** UDEF version of vsin_mode(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsin_mode vsin_mode
+/** UDEF version of vsm_choice(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_choice vsm_choice
+/** UDEF version of vsm_locator(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_locator vsm_locator
+/** @ingroup force_udef */
+short udef_vsm_string   (VdiHdl , short len, short echo, short echoxy[], char *str);
+/** UDEF version of vsm_valuator(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vsm_valuator vsm_valuator
+
+
+#ifdef FORCE_GEMLIB_UDEF
+#define vrq_string udef_vrq_string
+#define vsm_string udef_vsm_string
+#endif
+
+
+
 /*
  * output functions
  */
@@ -2566,6 +2903,8 @@ void v_gtext16     (VdiHdl , short x, short y, const short *wstr);
 void v_gtext16n    (VdiHdl , PXY pos, const short *wstr, short num);
 void v_justified   (VdiHdl , short x, short y, const char *str,
                              short len, short word_space, short char_space);
+void v_justified16n   (VdiHdl , short x, short y, const short * wstr, short num,
+                             short len, short word_space, short char_space);
 void v_pieslice    (VdiHdl , short x, short y,
                              short radius, short begang, short endang);
 void v_pline       (VdiHdl , short count, short pxy[]);
@@ -2574,6 +2913,55 @@ void v_rbox        (VdiHdl , short pxy[]);
 void v_rfbox       (VdiHdl , short pxy[]);
 void vr_recfl      (VdiHdl , short pxy[]);
 /**@}*/
+
+/** UDEF version of v_arc(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_arc v_arc
+/** UDEF version of v_bar(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_bar v_bar
+/** UDEF version of v_cellarray(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_cellarray v_cellarray
+/** UDEF version of v_circle(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_circle v_circle
+/** UDEF version of v_contourfill(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_contourfill v_contourfill
+/** UDEF version of v_ellarc(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_ellarc v_ellarc
+/** UDEF version of v_ellipse(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_ellipse v_ellipse
+/** UDEF version of v_ellpie(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_ellpie v_ellpie
+/** UDEF version of v_fillarea(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_fillarea v_fillarea
+/** @ingroup force_udef */
+void udef_v_gtext       (VdiHdl , short x, short y, const char *str);
+/** UDEF version of v_gtext16(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_gtext16 v_gtext16
+/** UDEF version of v_gtext16n(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_gtext16n v_gtext16n
+/** @ingroup force_udef */
+void udef_v_justified   (VdiHdl , short x, short y, const char *str,
+                             short len, short word_space, short char_space);
+/** UDEF version of v_justified16n(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_justified16n v_justified16n
+/** UDEF version of v_pieslice(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_pieslice v_pieslice
+/** UDEF version of v_pline(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_pline v_pline
+/** UDEF version of v_pmarker(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_pmarker v_pmarker
+/** UDEF version of v_rbox(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_rbox v_rbox
+/** UDEF version of v_rfbox(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_rfbox v_rfbox
+/** UDEF version of vr_recfl(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vr_recfl vr_recfl
+
+
+#ifdef FORCE_GEMLIB_UDEF
+#define v_gtext udef_v_gtext
+#define v_justified udef_v_justified
+#endif
+
 
 /*
  * raster functions
@@ -2589,6 +2977,16 @@ void vrt_cpyfm   (VdiHdl , short mode, short pxy[], MFDB *src, MFDB *dst,
                            short color[]);
 /**@}*/
 
+/** UDEF version of v_get_pixel(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_v_get_pixel v_get_pixel
+/** UDEF version of vr_trnfm(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vr_trnfm vr_trnfm
+/** UDEF version of vro_cpyfm(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vro_cpyfm vro_cpyfm
+/** UDEF version of vrt_cpyfm(). See \ref overviewUDEF for details about UDEF feature */
+#define udef_vrt_cpyfm vrt_cpyfm
+
+
 
 /*
  * Some usefull extensions.
@@ -2599,6 +2997,7 @@ void vrt_cpyfm   (VdiHdl , short mode, short pxy[], MFDB *src, MFDB *dst,
  */
 void  vdi_array2str (const short *src, char  *des, short len);
 short vdi_str2array (const char  *src, short *des);
+short vdi_str2array_n (const char  *src, short *des, int nmax);
 short vdi_wstrlen   (const short *wstr);
 /**@}*/
 
@@ -2610,12 +3009,12 @@ short vdi_wstrlen   (const short *wstr);
  *  @{
  */
 
-/* Array sizes in vdi control block */
-#define VDI_CNTRLMAX     15		/**< max size of vdi_control[] */
-#define VDI_INTINMAX   1024		/**< max size of vdi_intin[] */
-#define VDI_INTOUTMAX   256		/**< max size of vdi_intout[] */
-#define VDI_PTSINMAX    256		/**< max size of vdi_ptsin[] */
-#define VDI_PTSOUTMAX   256		/**< max size of vdi_ptsout[] */
+/* Array sizes in vdi control block as defined in NVDI 4 documentation */
+#define VDI_CNTRLMAX		15		/**< max size of vdi_control[] */
+#define VDI_INTINMAX		1024	/**< max size of vdi_intin[] */
+#define VDI_INTOUTMAX		512		/**< max size of vdi_intout[] */
+#define VDI_PTSINMAX		1024	/**< max size of vdi_ptsin[] */
+#define VDI_PTSOUTMAX		256		/**< max size of vdi_ptsout[] */
 
 /** TODO */
 typedef struct
@@ -2630,6 +3029,7 @@ typedef struct
 /** TODO */
 void vdi (VDIPB *pb);
 /**@}*/
+
 
 #endif /* VDI */
 
