@@ -1,4 +1,8 @@
 /* Default linker script, for normal executables */
+/* Copyright (C) 2014-2016 Free Software Foundation, Inc.
+   Copying and distribution of this script, with or without modification,
+   are permitted in any medium without royalty provided the copyright
+   notice and this notice are preserved.  */
 OUTPUT_FORMAT(a.out-mintprg)
 SEARCH_DIR("/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib");
 SECTIONS

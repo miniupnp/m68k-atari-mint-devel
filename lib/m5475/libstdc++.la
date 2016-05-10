@@ -17,7 +17,7 @@ old_library='libstdc++.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/home/mikro/fuck/m68k-atari-mint-build/gcc-4.6.4-m68000-cross/m68k-atari-mint/m5475/libstdc++-v3/src -L/home/mikro/fuck/m68k-atari-mint-build/gcc-4.6.4-m68000-cross/m68k-atari-mint/m5475/libstdc++-v3/src/.libs -lm'
+dependency_libs=' -L/home/mikro/atari/compilers/m68k-atari-mint-build/gcc-4.6.4-m68000-cross/m68k-atari-mint/m5475/libstdc++-v3/src -L/home/mikro/atari/compilers/m68k-atari-mint-build/gcc-4.6.4-m68000-cross/m68k-atari-mint/m5475/libstdc++-v3/src/.libs -lm'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
