@@ -1,0 +1,14 @@
+prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+exec_prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
+libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m68020-60
+includedir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/include
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 18.3.12
+Requires:
+Requires.private: zlib, libpng
+Libs: -L${libdir} -lfreetype
+Libs.private: 
+Cflags: -I${includedir}/freetype2
