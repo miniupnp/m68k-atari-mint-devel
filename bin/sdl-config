@@ -3,7 +3,7 @@
 prefix=/home/mikro/gnu-tools/m68000/m68k-atari-mint
 exec_prefix=${prefix}
 exec_prefix_set=no
-libdir=/home/mikro/gnu-tools/m68000/m68k-atari-mint/lib/m68020-60
+libdir=$prefix/lib/m68020-60
 
 #usage="\
 #Usage: sdl-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--cflags] [--libs]"
