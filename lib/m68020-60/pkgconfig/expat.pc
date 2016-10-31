@@ -1,0 +1,11 @@
+prefix=/usr/m68k-atari-mint
+exec_prefix=${prefix}
+libdir=/usr/m68k-atari-mint/lib/m68020-60
+includedir=${prefix}/include
+
+Name: expat
+Version: 2.2.0
+Description: expat XML parser
+URL: http://www.libexpat.org
+Libs: -L${libdir} -lexpat
+Cflags: -I${includedir}
