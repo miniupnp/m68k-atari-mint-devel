@@ -1,0 +1,13 @@
+prefix=/usr/m68k-atari-mint
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/m68020-60
+includedir=${prefix}/include
+enginesdir=${libdir}/engines
+
+Name: OpenSSL-libcrypto
+Description: OpenSSL cryptography library
+Version: 1.0.2j
+Requires: 
+Libs: -L${libdir} -lcrypto
+Libs.private: -m68020-60 -lz
+Cflags: -I${includedir} 
